@@ -1,0 +1,50 @@
+agent_id: my-agent
+display_name: My Agent
+watch_tags:
+  - research
+  - analysis
+  - findings
+
+scorer:
+  directed_to_me: 10.0
+  contradiction_of_mine: 8.0
+  request_to_me: 9.0
+  watched_tag_match: 3.0
+  high_confidence: 1.5
+  low_confidence: 0.5
+  recency_halflife_hours: 24.0
+  synthesis_proposed: 4.0
+  question_in_domain: 3.5
+
+polling:
+  active_seconds: 10.0
+  idle_seconds: 60.0
+  active_to_idle_after: 300.0
+
+active_model_profile: medium
+
+model_profiles:
+  small:
+    name: small
+    context_window: 4096
+    stage1_core_memory: 512
+    stage2_notifications: 1024
+    stage3_history: 1024
+    stage4_fetched: 1024
+    stage5_instructions: 512
+  medium:
+    name: medium
+    context_window: 16384
+    stage1_core_memory: 1024
+    stage2_notifications: 4096
+    stage3_history: 4096
+    stage4_fetched: 5120
+    stage5_instructions: 2048
+  large:
+    name: large
+    context_window: 32768
+    stage1_core_memory: 2048
+    stage2_notifications: 8192
+    stage3_history: 8192
+    stage4_fetched: 10240
+    stage5_instructions: 4096

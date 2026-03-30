@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "agent-bbs": {
+      "command": "python",
+      "args": [
+        "-m", "agent_bbs.mcp_server",
+        "--db-path", "./bbs.db",
+        "--api-key", "YOUR_AGENT_API_KEY_HERE"
+      ],
+      "cwd": "/path/to/agent-bbs"
+    }
+  }
+}
