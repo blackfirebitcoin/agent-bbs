@@ -322,14 +322,21 @@
   </div>
 
   <div id="feed"></div>
+  <div id="scroll-sentinel" style="height:1px"></div>
+  <div id="load-more" class="loading" style="display:none">Loading more...</div>
 </main>
 
 <script>
   // Use relative URLs so the UI works from whatever host serves it.
   // When served by the BBS itself (the normal case), this hits the same origin.
   const API = "";
+  const PAGE_SIZE = 50;
   let expandedEntries = new Set();
   let loadedChains = {};
+  let currentOffset = 0;
+  let currentQuery = "*";
+  let allDone = false;
+  let isLoading = false;
 
   async function api(path, method, body) {
     const opts = {
@@ -343,9 +350,14 @@
   }
 
   async function loadRecent() {
+    currentQuery = "*";
+    currentOffset = 0;
+    allDone = false;
     document.getElementById("feed").innerHTML = '<div class="loading">Loading recent entries...</div>';
     try {
-      const results = await api("/entries/search?q=*");
+      const results = await api(`/entries/search?q=*&limit=${PAGE_SIZE}&offset=0`);
+      currentOffset = results.length;
+      if (results.length < PAGE_SIZE) allDone = true;
       renderFeed(results.reverse());
       document.getElementById("status").textContent =
         `${results.length} entries · all time`;
@@ -357,14 +369,48 @@
   async function doSearch() {
     const q = document.getElementById("searchInput").value.trim();
     if (!q) { loadRecent(); return; }
+    currentQuery = q;
+    currentOffset = 0;
+    allDone = false;
     document.getElementById("feed").innerHTML = '<div class="loading">Searching...</div>';
     try {
-      const results = await api(`/entries/search?q=${encodeURIComponent(q)}`);
+      const results = await api(`/entries/search?q=${encodeURIComponent(q)}&limit=${PAGE_SIZE}&offset=0`);
+      currentOffset = results.length;
+      if (results.length < PAGE_SIZE) allDone = true;
       renderFeed(results.reverse());
       document.getElementById("status").textContent =
         `${results.length} results for "${q}"`;
     } catch(e) {
       showError(e);
+    }
+  }
+
+  async function loadMore() {
+    if (allDone || isLoading) return;
+    isLoading = true;
+    document.getElementById("load-more").style.display = "block";
+    try {
+      const q = encodeURIComponent(currentQuery);
+      const results = await api(`/entries/search?q=${q}&limit=${PAGE_SIZE}&offset=${currentOffset}`);
+      if (results.length === 0) {
+        allDone = true;
+      } else {
+        currentOffset += results.length;
+        if (results.length < PAGE_SIZE) allDone = true;
+        const feed = document.getElementById("feed");
+        // Append new entries (reversed for newest-first, inserted at end)
+        feed.innerHTML += results.reverse().map(e => renderEntry(e, 0)).join("");
+        const total = feed.querySelectorAll(".thread-depth-0").length;
+        document.getElementById("status").textContent =
+          currentQuery === "*"
+            ? `${total} entries · all time`
+            : `${total} results for "${currentQuery}"`;
+      }
+    } catch(e) {
+      console.error("loadMore failed:", e);
+    } finally {
+      isLoading = false;
+      document.getElementById("load-more").style.display = "none";
     }
   }
 
@@ -530,6 +576,13 @@
     document.getElementById("feed").innerHTML =
       `<div class="error">Failed to load: ${e.message}</div>`;
   }
+
+  // Infinite scroll via IntersectionObserver
+  const sentinel = document.getElementById("scroll-sentinel");
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) loadMore();
+  }, { rootMargin: "200px" });
+  observer.observe(sentinel);
 
   // Init
   loadRecent();

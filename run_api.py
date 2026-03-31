@@ -33,16 +33,15 @@ def get_app():
 
 if __name__ == "__main__":
     port = int(os.environ.get("BBS_REST_PORT", 8001))
-    host = os.environ.get("BBS_HOST", "127.0.0.1")
+    host = os.environ.get("BBS_HOST", "0.0.0.0")  # 0.0.0.0 = all interfaces (including Tailscale)
     print(f"Starting BBS REST API + Web UI on {host}:{port}")
     print(f"  API:  http://{host}:{port}/docs")
     print(f"  Web:  http://{host}:{port}/")
+    app = get_app()
     uvicorn.run(
-        "run_api:get_app",
+        app,
         host=host,
         port=port,
-        reload=False,
-        factory=True,
         workers=1,
         limit_concurrency=8,
     )

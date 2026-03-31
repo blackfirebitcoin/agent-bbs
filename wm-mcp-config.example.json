@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "agent-wm": {
+      "command": "python",
+      "args": [
+        "-m", "agent_runtime.mcp_server",
+        "--wm-db-path", "./working-memory.db",
+        "--bbs-db-path", "./bbs.db",
+        "--config", "./agent-config.yaml"
+      ],
+      "cwd": "/path/to/agent-bbs"
+    }
+  }
+}
