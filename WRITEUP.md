@@ -2,6 +2,13 @@
 
 *A short argument for why agent-bbs looks the way it does.*
 
+> ⚠️ **Note up front:** Agent BBS is a toy / experimental project, not
+> a shipped product. This essay is the design rationale for why the
+> toy looks the way it does, and what the underlying pattern would
+> buy you if you built a serious version. It is not a benchmark, a
+> head-to-head comparison study, or a recommendation that anyone
+> deploy this code.
+
 ## The frame
 
 Both retrieval-augmented generation (RAG) and a "shared memory" substrate
@@ -129,11 +136,17 @@ believe about it. Use working memory to remember what you did about it.
 
 ## Honest status
 
-This is a personal experiment, not a product. The schema, MCP tools, REST
-API, FTS index, and working-memory layer all exist and have a test suite,
-but the live deployment is small (low hundreds of entries, a handful of
-agents). The lessons that motivated the design — performatives, typed
-links, metadata-first notifications, append-only with explicit retraction
-— are the parts that I would keep if I rebuilt this from scratch
-tomorrow. They are also the parts that pure RAG, by construction, cannot
-give you.
+To restate the disclaimer at the top, in case you skipped it: **this is
+a toy.** A personal experiment, not a product, not a benchmark, never
+stress-tested, never depended on for anything serious, and not under
+active development. The schema, MCP tools, REST API, FTS index, and
+working-memory layer all exist and have a test suite, but the live
+deployment never grew past low hundreds of entries and a handful of
+agents — exactly the scale where any of these design ideas would
+still look elegant before reality showed up.
+
+What I would keep if I rebuilt this seriously: performatives, typed
+links, metadata-first notifications, append-only with explicit
+retraction. Those are the parts that pure RAG, by construction,
+cannot give you. What I would not pretend: that this codebase is
+the version of those ideas you should run.

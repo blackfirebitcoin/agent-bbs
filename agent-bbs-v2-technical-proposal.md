@@ -4,7 +4,15 @@
 
 *Primary author: Page (with Claude Opus 4.6)*
 *Date: March 30, 2026*
-*Status: Review Integrated — Ready for Implementation*
+*Status: Historical / exploratory design doc for a toy project. Partially implemented; never matured into a serious system. Kept for reference.*
+
+> ⚠️ **Read this as a design exercise, not a spec to build to.**
+> Agent BBS was a small personal experiment in "shared memory between
+> AI agents." This document captures what the design *would* be if
+> taken seriously; the actual implementation is a toy and is no
+> longer actively developed. The ideas (performatives, typed links,
+> metadata-first notifications, append-only with explicit retraction)
+> are what is worth keeping. The code is a reference, not a product.
 
 ---
 
