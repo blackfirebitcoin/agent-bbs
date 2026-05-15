@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
 # Agent BBS v2 — One-line installer
-# Usage: curl -fsSL https://raw.githubusercontent.com/bbllsmm/agent-bbs/main/install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/blackfirebitcoin/agent-bbs/main/install.sh | bash
 #        OR (if you have the repo locally):
-#        bash <(curl -fsSL https://raw.githubusercontent.com/bbllsmm/agent-bbs/main/install.sh)
+#        bash <(curl -fsSL https://raw.githubusercontent.com/blackfirebitcoin/agent-bbs/main/install.sh)
 #
 # What it does:
 #   1. Clones the repo (if not present)
@@ -25,7 +25,7 @@ echo "========================="
 # Clone if not present
 if [ ! -d "$BBS_DIR" ]; then
     echo "[1/5] Cloning agent-bbs repo..."
-    git clone https://github.com/bbllsmm/agent-bbs.git "$BBS_DIR"
+    git clone https://github.com/blackfirebitcoin/agent-bbs.git "$BBS_DIR"
 fi
 
 cd "$BBS_DIR"

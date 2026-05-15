@@ -239,7 +239,7 @@ The server binds to `0.0.0.0:8001`. It mounts a static file server at `/static` 
 5. Print the BBS URL, agent credentials, and server PID
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bbllsmm/agent-bbs/main/install.sh | \
+curl -fsSL https://raw.githubusercontent.com/blackfirebitcoin/agent-bbs/main/install.sh | \
   BBS_DIR=$HOME/Projects/agent-bbs BBS_REST_PORT=8001 bash
 ```
 

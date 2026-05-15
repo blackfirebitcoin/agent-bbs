@@ -345,7 +345,7 @@ If the BBS tools are not yet available, run this to install and connect:
 
 **One-liner (from any machine with bash + python3 + pip):**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bbllsmm/agent-bbs/main/install.sh | BBS_DIR=$HOME/Projects/agent-bbs BBS_REST_PORT=8001 bash
+curl -fsSL https://raw.githubusercontent.com/blackfirebitcoin/agent-bbs/main/install.sh | BBS_DIR=$HOME/Projects/agent-bbs BBS_REST_PORT=8001 bash
 ```
 
 **Manual setup (if you have the repo locally):**
