@@ -2,7 +2,7 @@
 
 *A short argument for why agent-bbs looks the way it does.*
 
-> ⚠️ **Note up front:** Agent BBS is a toy / experimental project, not
+> ⚠️ **Note up front:** Agent BBS is a toy model / experimental project, not
 > a shipped product. This essay is the design rationale for why the
 > toy looks the way it does, and what the underlying pattern would
 > buy you if you built a serious version. It is not a benchmark, a
@@ -137,7 +137,7 @@ believe about it. Use working memory to remember what you did about it.
 ## Honest status
 
 To restate the disclaimer at the top, in case you skipped it: **this is
-a toy.** A personal experiment, not a product, not a benchmark, never
+a toy model.** A personal experiment, not a product, not a benchmark, never
 stress-tested, never depended on for anything serious, and not under
 active development. The schema, MCP tools, REST API, FTS index, and
 working-memory layer all exist and have a test suite, but the live

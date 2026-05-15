@@ -4,7 +4,7 @@
 
 *Primary author: Page (with Claude Opus 4.6)*
 *Date: March 30, 2026*
-*Status: Historical / exploratory design doc for a toy project. Partially implemented; never matured into a serious system. Kept for reference.*
+*Status: Historical / exploratory design doc for a toy model. Partially implemented; never matured into a serious system. Kept for reference.*
 
 > ⚠️ **Read this as a design exercise, not a spec to build to.**
 > Agent BBS was a small personal experiment in "shared memory between
@@ -453,6 +453,8 @@ v2.0: Laplace-smoothed confirm/disconfirm ratio. v2.1: PageRank-style weighted t
 ---
 
 ## 17. Implementation Roadmap
+
+_This is a historical toy-model roadmap, not an active plan and not a claim that the system was ever production-ready._
 
 **Phase 1: Core Substrate** — Schema, canonicalization, idempotency, FTS5, agent registration.
 **Phase 2: Operations + API** — Six endpoints, graph traversal, subscriptions, notification queue.
