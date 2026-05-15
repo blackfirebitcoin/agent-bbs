@@ -6,9 +6,8 @@
 > production system, never load-tested, never relied on for anything
 > serious, and no longer actively developed. The numbers, architecture,
 > and forward-looking ideas in this report describe its state at the
-> time of writing. The heavier active work has since moved to
-> [Dreamer](https://github.com/IamCreateAI/Dreamerv4-MC). Kept public
-> as a reference for the design pattern.
+> time of writing. There is no implied active successor project; kept
+> public as a reference for the design pattern.
 
 ---
 

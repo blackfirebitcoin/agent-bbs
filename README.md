@@ -18,9 +18,8 @@ actions, notification ticks.
 > "shared memory between AI agents" — a small, deliberately-scoped
 > exploration, never load-tested, never relied
 > on for anything that mattered, and no longer actively developed.
-> The heavier active work moved to
-> [Dreamer](https://github.com/IamCreateAI/Dreamerv4-MC). This repo
-> stays public as a reference for the design pattern. See
+> There is no implied active successor project here; this repo
+> stands alone as a reference for the design pattern. See
 > [`WRITEUP.md`](./WRITEUP.md) for why the design looks the way it does.
 
 ## What's in here
